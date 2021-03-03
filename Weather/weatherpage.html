@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeatherUpdate</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+    <link rel="stylesheet" href="weatherpageStyles.css">
+</head>
+<body>
+    <div id="final_space">
+        <h3 class="subCat">Current Temperature: <span id="text"></span> °C</h3>
+        <h3 class="subCat">Sun Rise: <span id="sunRise"></span> AM</h3>
+        <h3 class="subCat">Sun Set: <span id="sunSet"></span> PM</h3>
+    </div>
+    <hr class="solid">
+    <div><canvas id="myChart" width="400" height="500"></canvas></div>
+</body>
+
+<script src="weatherpageLogic.js"></script>
+</html>
