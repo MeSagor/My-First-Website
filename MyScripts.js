@@ -11,8 +11,11 @@ function insta(){
     window.alert("I Don't Have Any Account yet!");
 }
 function reachMe(){
-    window.alert("Gmail: me.sshorifulislam@gmail.com");
+    window.alert("Gmail: dear.shorifulislam@gmail.com");
 }
 function noPages(){
     window.top.location.href='Weather/weatherpage.html';
+}
+function runClock(){
+    window.top.location.href='Clock/clock.html';
 }
