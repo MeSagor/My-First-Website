@@ -1,0 +1,13 @@
+ .sub-cat {
+    float: left;
+    background: #659993;
+    padding: 5px 10px;
+    margin-right: 10px;
+}
+#final_space {
+    display: flex;
+    justify-content:space-around; 
+ }
+ hr.solid {
+  border-top: 1px solid #bbb;
+}

@@ -19,3 +19,6 @@ function noPages(){
 function runClock(){
     window.top.location.href='Clock/clock.html';
 }
+function runCorona(){
+    window.top.location.href='CoronaTraker/corona.html';
+}
