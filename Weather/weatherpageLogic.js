@@ -9,55 +9,8 @@ var randomColorGenerator = function () {
 };
 
 Chartit();
-async function Chartit(){
-    await getData();
-    const ctx = document.getElementById('myChart').getContext('2d');
-    const myChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-        labels: time,
-        datasets: [{
-            label: 'Temperature',
-            data: temperature,
-//            fill:false,
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: randomColorGenerator(),
-            borderWidth: 3
-        }]
-    },
-    options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero:true,
-                    callback: function(value, index, values) {
-                        return value + '°C';
-                    }
-                }
-            }]
-        },
-        layout: {
-            padding: {
-                left: 100,
-                right: 100,
-                top: 50,
-                bottom: 50
-            }
-        }
-    }
- });
-}
 
- async function getData(){
+async function getData(){
    const response = await fetch(api_url);
    const data = await response.json();
    hourly = data.hourly;
@@ -103,5 +56,60 @@ getData().catch(error=>{
     console.log('Error!!!');
     console.log(error);
 });
+
+async function Chartit(){
+    await getData();
+    
+    const ctx = document.getElementById('myChart').getContext('2d');
+    const myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: time,
+        datasets: [{
+            label: 'Temperature',
+            data: temperature,
+//            fill:false,
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: randomColorGenerator(),
+            borderWidth: 3
+        }]
+    },
+    options: {
+     //   responsive: true,
+     //     maintainAspectRatio: false,
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true,
+                    callback: function(value, index, values) {
+                        return value + '°C';
+                    }
+                }
+            }],
+             xAxes: [{
+                ticks: {
+                    maxTicksLimit: 20
+                }
+           }]
+        },
+        layout: {
+            padding: {
+                left: 100,
+                right: 100,
+                top: 50,
+                bottom: 50
+            }
+        }
+    }
+ });
+}
+
 
 

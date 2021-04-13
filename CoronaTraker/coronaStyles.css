@@ -11,3 +11,10 @@
  hr.solid {
   border-top: 1px solid #bbb;
 }
+hr.solid2 {
+  border-top: 3px solid #bbb;
+}
+div.autoAdjust {
+  height: auto;
+  width: auto;
+}

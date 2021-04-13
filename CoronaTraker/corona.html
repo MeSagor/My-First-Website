@@ -10,10 +10,16 @@
 <body>
     <div id="final_space">
         <h3 class="subCat">New Affected: <span id="newAffected"></span></h3>
-        <h3 class="subCat">New Deaths: <span id="newDeath"></span></h3>
+        <h3 class="subCat">New Death: <span id="newDeath"></span></h3>
+        <h3 class="subCat">New Recovery: <span id="newRecovery"></span></h3>
     </div>
     <hr class="solid">
-    <div><canvas id="myChart" width="120" height="50"></canvas></div>
+    <div class="autoAdjust"><canvas id="myChartA"></canvas></div>
+    <hr class="solid2">
+    <div class="autoAdjust"><canvas id="myChartD"></canvas></div>
+    <hr class="solid2">
+    <div class="autoAdjust"><canvas id="myChartR"></canvas></div>
+    
 </body>
 
 <script src="coronaScript.js"></script>
