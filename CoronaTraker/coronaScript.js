@@ -6,6 +6,7 @@ var requestOptions = {
 var t1 = [];
 var t2 = [];
 var t3 = [];
+var month = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec",]
 var Afinal = [];
 var Dfinal = [];
 var Rfinal = [];
@@ -18,7 +19,17 @@ const response = await fetch("https://corona.lmao.ninja/v2/historical/Bangladesh
 const result = await response.json();
     for (let x in result.timeline.cases) {
       t1.push(result.timeline.cases[x]);
-      date.push(x);
+      var mo = "";
+      var da = "";
+      var cnt = 0;
+      for (var i = 0; i < x.length; i++){
+          if(x[i]!="/" && cnt<1) mo += x[i];
+          else if (x[i]!="/" && cnt<2) da += x[i];
+          else cnt+=1;
+      }
+      var fmo = parseInt(mo);
+      var fdate = da + " " + month[(fmo-1)%12];
+      date.push(fdate);
     }
     for (let x in result.timeline.deaths) {
       t2.push(result.timeline.deaths[x]);
@@ -73,7 +84,7 @@ async function Go(){
     data: {
         labels: date,
         datasets: [{
-            label: 'Affected History',
+            label: 'Affected',
             data: Afinal,
             backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
@@ -88,6 +99,11 @@ async function Go(){
         }]
     },
     options: {
+        legend: {
+           labels: {
+              fontSize: 22
+            }
+        },
         scales: {
             yAxes: [{
                 ticks: {
@@ -117,7 +133,7 @@ async function Go(){
     data: {
         labels: date,
         datasets: [{
-            label: 'Death History',
+            label: 'Death',
             data: Dfinal,
             backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
@@ -132,6 +148,11 @@ async function Go(){
         }]
     },
     options: {
+        legend: {
+           labels: {
+              fontSize: 22
+            }
+        },
         scales: {
             yAxes: [{
                 ticks: {
@@ -161,7 +182,7 @@ async function Go(){
     data: {
         labels: date,
         datasets: [{
-            label: 'Recovery History',
+            label: 'Recovery',
             data: Rfinal,
             backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
@@ -176,6 +197,11 @@ async function Go(){
         }]
     },
     options: {
+        legend: {
+           labels: {
+              fontSize: 22
+            }
+        },
         scales: {
             yAxes: [{
                 ticks: {
