@@ -15,7 +15,7 @@ var date = [];
 Go();
 
 async function getData(){
-const response = await fetch("https://corona.lmao.ninja/v2/historical/Bangladesh?lastdays=800", requestOptions);
+const response = await fetch("https://corona.lmao.ninja/v2/historical/Bangladesh?lastdays=1000", requestOptions);
 const result = await response.json();
     for (let x in result.timeline.cases) {
       t1.push(result.timeline.cases[x]);
@@ -57,7 +57,8 @@ async function Go(){
  date.length=0;
  
  await getData();
- 
+   
+   document.getElementById("date").innerHTML = date[date.length-1];
    document.getElementById("newAffected").innerHTML = t1[t1.length-1] - t1[t1.length-2];
    document.getElementById("newDeath").innerHTML = t2[t2.length-1] - t2[t2.length-2];
    document.getElementById("newRecovery").innerHTML = t3[t3.length-1] - t3[t3.length-2];
@@ -77,6 +78,8 @@ async function Go(){
       Rfinal.push(t3[i]-sss);
       sss = t3[i];
   }
+  // Bug at index 146 in Recovery data...
+  Rfinal[146] = 2000;
  
   var ctx = document.getElementById('myChartA').getContext('2d');
   var myChart = new Chart(ctx, {
@@ -112,7 +115,7 @@ async function Go(){
             }],
             xAxes: [{
                 ticks: {
-                    maxTicksLimit: 20
+                    maxTicksLimit: 17
                 }
            }]
         },
@@ -161,7 +164,7 @@ async function Go(){
             }],
             xAxes: [{
                 ticks: {
-                    maxTicksLimit: 20
+                    maxTicksLimit: 17
                 }
            }]
         },
@@ -210,7 +213,7 @@ async function Go(){
             }],
             xAxes: [{
                 ticks: {
-                    maxTicksLimit: 20
+                    maxTicksLimit: 17
                 }
            }]
         },

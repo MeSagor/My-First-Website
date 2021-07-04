@@ -8,11 +8,16 @@
     display: flex;
     justify-content:space-around; 
  }
- hr.solid {
+hr.solid {
   border-top: 1px solid #bbb;
 }
 hr.solid2 {
   border-top: 2px solid #bbb;
+}
+hr.solid3 {
+  border-top: 1px solid #bbb;
+  margin-left: 40%;
+  margin-right: 40%;
 }
 div.autoAdjust {
   height: auto;
